@@ -9,26 +9,34 @@ var readFile = q.denodeify(fs.readFile);
 var dataPath = path.normalize(__dirname);
 
 var precincts = (function (){
-
-  var shapes = function () {
-    var path = __dirname + '/precinct.geojson';
+  var getFile = function(path) {
     return readFile(path, 'utf-8').then(function (fileContents) {
-      return JSON.parse(fileContents);
+      return fileContents;
     });
   };
 
+  var shapes = function () {
+    return getFile(__dirname + '/precinct.geojson');
+  };
+
+  var all = function () {
+    return getFile(__dirname + '/precinct_data.json');
+  }
+
   return {
-    shapes:shapes
+    shapes:shapes,
+    all:all
   };
 })();
 
-// Get list of precinctss
 exports.index = function(req, res) {
-  res.json([]);
+  precincts.all().then(function (precinctData) {
+    res.json(JSON.parse(precinctData));
+  });
 };
 
 exports.shapes = function(req, res) {
   precincts.shapes().then(function (shapes) {
-    res.json(shapes);
+    res.json(JSON.parse(shapes));
   });
 }

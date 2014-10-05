@@ -10,6 +10,9 @@ angular.module('ccrbsiteApp')
         resolve: {
           shapes: ['Loader', function(Loader) {
             return Loader('shapes');
+          }],
+          precinctData: ['Loader', function(Loader) {
+            return Loader('precincts');
           }]
         }
       });

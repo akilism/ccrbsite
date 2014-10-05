@@ -5,8 +5,13 @@ var services = angular.module('ccrbsiteApp.services', ['ngResource']);
 services.factory('Loader', ['$http', '$q', function ($http, $q) {
 
   var getPath = function (requestedData) {
-    if(requestedData === 'shapes') {
-      return '/api/precincts/shapes';
+    switch(requestedData) {
+      case 'shapes':
+        return '/api/precincts/shapes';
+      case 'precincts':
+        return '/api/precincts/';
+      default:
+        return '';
     }
   };
 
