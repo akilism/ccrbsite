@@ -3,9 +3,9 @@
 var _ = require('lodash'),
     path = require('path'),
     fs = require('fs'),
-    q = require('q');
+    Q = require('q');
 
-var readFile = q.denodeify(fs.readFile);
+var readFile = Q.denodeify(fs.readFile);
 var dataPath = path.normalize(__dirname);
 
 var precincts = (function (){
@@ -15,23 +15,40 @@ var precincts = (function (){
     });
   };
 
+  var getPrecinctId = function (precinct) {
+    return 'p' + precinct.replace(' Precinct', '');
+  };
+
+  var transformData = function (precinctData) {
+    // console.log(precinctData.data);
+    _.forEach(precinctData.data, function (precinct) {
+      precinct.pid = getPrecinctId(precinct.precinct);
+    })
+
+    return precinctData;
+  };
+
   var shapes = function () {
     return getFile(__dirname + '/precinct.geojson');
   };
 
   var all = function () {
-    return getFile(__dirname + '/precinct_data.json');
+    return getFile(__dirname + '/precinct_data.json')
+      .then(function (precinctData) {
+        return transformData(JSON.parse(precinctData));
+      });
   }
 
   return {
     shapes:shapes,
-    all:all
+    all:all,
+    transformData:transformData
   };
 })();
 
 exports.index = function(req, res) {
   precincts.all().then(function (precinctData) {
-    res.json(JSON.parse(precinctData));
+    res.json(precinctData);
   });
 };
 

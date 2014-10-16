@@ -1,1 +1,32 @@
+
 <div id="largeMap">&nbsp;</div>
+<!-- <div class="yearSelector">
+  <span class="radio">
+    <label><input ng-model="selectedYear" type="radio" name="yearRadios" id="yearRadios2009" value="2009">2009</label>
+  </span>
+  <span class="radio">
+    <label><input ng-model="selectedYear" type="radio" name="yearRadios" id="yearRadios2010" value="2010">2010</label>
+  </span>
+  <span class="radio">
+    <label><input ng-model="selectedYear" type="radio" name="yearRadios" id="yearRadios2011" value="2011">2011</label>
+  </span>
+  <span class="radio">
+    <label><input ng-model="selectedYear" type="radio" name="yearRadios" id="yearRadios2012" value="2012">2012</label>
+  </span>
+  <span class="radio">
+    <label><input ng-model="selectedYear" type="radio" name="yearRadios" id="yearRadios2013" value="2013">2013</label>
+  </span>
+  <span class="radio">
+    <label><input ng-model="selectedYear" type="radio" name="yearRadios" id="yearRadiosTotal" value="total" checked>Total</label>
+  </span>
+</div> -->
+<button ng-click="showClaimStat($event, false)" id="btnClaimStat" type="button" class="btn btn-info">
+  See ClaimStat Claims.
+</button>
+<button ng-click="showClaimStat($event, true)" id="btnClaimStatAmounts" type="button" class="btn btn-info btn-xs">
+  See ClaimStat Claims w/Claim Amounts.
+</button>
+<div id="detailViews">
+  <detail-modal data="selectedPrecincts" year="selectedYear"></detail-modal>
+  <claim-display data="selectedClaim"></claim-display>
+</div>

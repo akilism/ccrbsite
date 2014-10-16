@@ -1,0 +1,6 @@
+<div class="claim-display">
+  <p class="claim-display-name">Claim No: {{claim.number}} <span class="close"  ng-click="hideClaimDisplay()">x</span></p>
+  <p class="claim-display-occurrence">Location: {{claim.occurrence_1 | lowercase }} {{claim.borough | lowercase }}</p>
+  <p class="claim-display-date">Date of Occurrence: {{claim.date_occurred}}</p>
+  <p class="claim-display-amount">Amount: {{claim.amount | currency }}</p>
+</div>

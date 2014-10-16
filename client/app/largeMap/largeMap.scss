@@ -9,8 +9,14 @@
   // border: 1px solid black;
 }
 
-.highlighted-path {
-  stroke: rgb(255, 255, 255);
+.highlighted-shape {
+  // stroke: rgb(255, 255, 255);
+  fill-opacity: 1;
+}
+
+.active-shape {
+  color: #E1F550;
+  fill-opacity: 1;
 }
 
 p.popup-precinct-name {
@@ -29,4 +35,34 @@ p.popup-precinct-total {
 
 .leaflet-popup-content {
   width: auto;
+}
+
+#btnClaimStat {
+  z-index: 1000;
+  position: absolute;
+  left: 11px;
+  top: 70px;
+}
+
+#btnClaimStatAmounts {
+  z-index: 1000;
+  position: absolute;
+  left: 11px;
+  top: 110px;
+}
+
+#detailViews {
+  z-index: 1001;
+  position: absolute;
+  top: 150px;
+  left: 0;
+  margin: 0 0 0 11px;
+}
+
+
+.yearSelector {
+  position: absolute;
+  z-index: 1001;
+  top: 30px;
+  background-color: #fff;
 }

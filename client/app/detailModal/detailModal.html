@@ -1,0 +1,10 @@
+<div id="detailModal">
+  <ul>
+    <li ng-repeat="precinct in sortedData track by precinct.pid">
+      <div class="precinct-details" ng-class="{{precinct.pid}}" ng-mousemove="highlightShape($event, precinct.pid)">
+        {{precinct.precinct}}<br />
+        {{precinct[selectedYear]}}
+      </div>
+    </li>
+  </ul>
+</div>

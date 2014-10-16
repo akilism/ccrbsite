@@ -10,6 +10,8 @@ services.factory('Loader', ['$http', '$q', function ($http, $q) {
         return '/api/precincts/shapes';
       case 'precincts':
         return '/api/precincts/';
+      case 'claims':
+        return '/api/claims';
       default:
         return '';
     }
